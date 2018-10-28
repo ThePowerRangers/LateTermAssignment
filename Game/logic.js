@@ -13,6 +13,7 @@ function  playAgain(){
     document.getElementById(currentPlayer).innerHTML = "Player X, it's your turn!";
   }
 
+
   function whosTurn(){
     if(turnCounter %2 == 0){
       return 'X';
@@ -21,6 +22,7 @@ function  playAgain(){
       return 'O';
     }
   }
+
 
   function whereToPlace(posistionId){
     if(!gameOver){
@@ -117,3 +119,5 @@ function  playAgain(){
       //Nobody has won and not a Draw
       return false;
   }
+
+module.exports = logic;
