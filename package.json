@@ -13,11 +13,17 @@
   },
   "author": "PowerRangers",
   "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "lodash": "^4.17.11"
+  },
   "bugs": {
     "url": "https://github.com/ThePowerRangers/LateTermAssignment/issues"
   },
   "homepage": "https://github.com/ThePowerRangers/LateTermAssignment#readme",
   "devDependencies": {
-    "jest": "^23.6.0"
+    "body-parser": "^1.18.3",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.5"
   }
 }
