@@ -1,10 +1,15 @@
+//Initializing variables used in the game
 var playerXWins = 0;
 var playerOWins = 0;
 var numberOfDraws = 0;
 var gameOver = false;
 var turnCounter = 0;
 
+//This function resets the game after the "Play again" button is pushed
 function  playAgain(){
+
+    //turnCounter counts how many times either x or o has been plased in the gameOver
+    //This is then used to find out whose turn it is and whether or not the game is over
     turnCounter = 0;
     gameOver = false;
     for(var i = 1; i < 10; i++){
@@ -13,8 +18,10 @@ function  playAgain(){
     document.getElementById("currentPlayer").innerHTML = "Player X, it's your turn!";
   }
 
+  //Here we find out whos turn it is, since turnCounter is enitialized as 0 and
+  //X always starts then his turn is always on an even number and O's is on the odd once
   function whosTurn(){
-    if(turnCounter %2 == 0){
+    if(turnCounter % 2 == 0){
       return 'X';
     }
     else{
@@ -22,9 +29,12 @@ function  playAgain(){
     }
   }
 
+  //Here we find the correct index to place the X or O depending on where the player
+  //selects it.
   function whereToPlace(posistionId){
     if(!gameOver){
       var where = document.getElementById(posistionId);
+      //Making sure that only an empty slot can be selected
       if(where.innerText == ''){
         var who = whosTurn();
         turnCounter++;
@@ -44,11 +54,12 @@ function  playAgain(){
   }
 
   function checkWinner(who){
-    //Impossible to win inn less then 5 turns X O X O  need atleast 3 of a kind to win
+    //Impossible to win in less then 5 turns X O X O  need atleast 3 of a kind to win
     if(turnCounter < 5){
       return false;
     }
 
+    //giving each index a describing name to use later
     var upperLeft = document.getElementById("1").innerText;
     var upperMiddle = document.getElementById("2").innerText;
     var upperRight = document.getElementById("3").innerText;
@@ -92,14 +103,14 @@ function  playAgain(){
 
     if(winner == true){
       if(who == 'X'){
-        //Implemtnt Score Board ?
+        //Implement Score Board
         playerXWins++;
         document.getElementById("Xwins").innerHTML = (playerXWins + " wins");
         document.getElementById("currentPlayer").innerHTML = ("Player " + who + " has won!");
         return true;
       }
       else{
-        //Implemtnt Score Board ?
+        //Implement Score Board
         playerOWins++;
         document.getElementById("Owins").innerHTML = (playerOWins + " wins");
         document.getElementById("currentPlayer").innerHTML = ("Player " + who + " has won!");
@@ -107,6 +118,7 @@ function  playAgain(){
       }
       return true;
     }
+    //need to check this last as X can win on his last try, if he does not the game ends in a tie
     else if(turnCounter == 9){
       //It is a Draw
       numberOfDraws++;
