@@ -4,13 +4,19 @@ var numberOfDraws = 0;
 var gameOver = false;
 var turnCounter = 0;
 
+var board = ['', '', '', '', '', '', '', '', ''];
+
+function returnBoard(){
+  return board;
+}
+
 function  playAgain(){
     turnCounter = 0;
     gameOver = false;
     for(var i = 1; i < 10; i++){
       document.getElementById(i.toString()).innerText = '';
     }
-    document.getElementById(currentPlayer).innerHTML = "Player X, it's your turn!";
+    document.getElementById("currentPlayer").innerHTML = "Player X, it's your turn!";
   }
 
   function whosTurn(){
@@ -29,6 +35,7 @@ function  playAgain(){
         var who = whosTurn();
         turnCounter++;
         where.innerText = who;
+        board[parseInt(posistionId)] = who;
         var whosNext = whosTurn();
         document.getElementById("currentPlayer").innerHTML = whosNext + ", it's your turn!";
         gameOver = checkWinner(who);
@@ -116,4 +123,12 @@ function  playAgain(){
     }
       //Nobody has won and not a Draw
       return false;
+  }
+
+  module.exports = {
+    checkWinner,
+    whereToPlace,
+    whosTurn,
+    playAgain,
+    returnBoard
   }
