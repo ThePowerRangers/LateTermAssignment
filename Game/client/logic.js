@@ -10,7 +10,7 @@ function  playAgain(){
     for(var i = 1; i < 10; i++){
       document.getElementById(i.toString()).innerText = '';
     }
-    document.getElementById(currentPlayer).innerHTML = "Player X, it's your turn!";
+    document.getElementById("currentPlayer").innerHTML = "Player X, it's your turn!";
   }
 
   function whosTurn(){
